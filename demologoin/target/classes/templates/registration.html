@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Registration Form</title>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/registration.css}" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<form th:action="@{/}" method="get">
+		<h1 style="padding: 4px;font-size:27pt;text-align:center;color:white;background-color:blue;"><font face="playfair display"> Sign Up</font></h1>
+	</form>	
+	
+	<div class="column-2-left">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 col-md-offset-2">
+				<form autocomplete="off" action="#" th:action="@{/registration}"
+					th:object="${user}" method="post" class="form-horizontal"
+					role="form">
+					<h3><font face="playfair display">Tell us a bit about yourself</font></h3>
+					<div class="form-group">
+						<div class="col-sm-9">
+						<label th:if="${#fields.hasErrors('name')}" th:errors="*{name}"
+								class="validation-message"></label>
+						<input type="text" th:field="*{name}" placeholder="Name"
+								class="form-control" /> 
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="col-sm-9">
+						<label	th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"
+								class="validation-message"></label>
+							<input type="text" th:field="*{lastName}"
+								placeholder="Last Name" class="form-control" /> 
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-9">
+							<input type="text" th:field="*{email}" placeholder="Email"
+								class="form-control" /> <label
+								th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
+								class="validation-message"></label>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-9">
+							<input type="password" th:field="*{password}"
+								placeholder="Password" class="form-control" /> <label
+								th:if="${#fields.hasErrors('password')}" th:errors="*{password}"
+								class="validation-message"></label>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="col-sm-9">
+							<button type="submit" class="btn btn-primary btn-block">Register User</button>
+						</div>
+					</div>
+					
+					<span th:utext="${successMessage}"></span>
+					
+					
+				</form>
+			</div>
+		</div>
+	</div>
+	</div>
+	
+	<form th:action="@{/login}" method="get">
+	<h3 style="position: fixed; bottom: 0; width: 100%;text-align:right; color:white; height: 90px;padding:30px; background-color:blue; font-size: 15px;">Already a customer? &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+    <button style="padding: 8px; font-size:15px;color:white;background-color:blue;" type="Submit"> Sign In</button>
+    </h3>
+    </form>
+
+	<div class="column-2-right">
+            <p style = "color: white; font-size: 12pt; padding: 120px;"><font face="playfair display">Create a Great Digital Profile to present who you are what you do showcase your skills, passion, and career aspiration on your personalized profile. Personalize and showcase all of you - from your work to your passion.</font></p>
+  	</div>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Spring Security Tutorial</title>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/login.css}" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  	<style>
+	hr { 
+	    display: block;
+	    margin-top: 0.5em;
+	    margin-bottom: 0.5em;
+	    margin-left: auto;
+	    margin-right: auto;
+	    border-style: inset;
+	    border-width: 2px;
+	} 
+</style>
+</head>
+
+<body>	
+	<div class="container">
+		<form th:action="@{/login}" method="POST" class="form-signin" style = "max-width: 600px;
+		  padding: 10px 15px 66px;
+		  margin: 75px auto;
+		  background-color: white;
+		  border: 3px solid rgba(0,0,0,0.1);">
+			<h3 class="form-signin-heading" th:text="Welcome" style="text-align:center; margin-bottom: 30px"></h3>
+			<hr>
+			<br/>
+			
+			<div class="inner-addon left-addon">
+    		<i class="glyphicon glyphicon-user"></i>
+			<input type="text" id="email" name="email"  th:placeholder="Email"
+				class="form-control" style = "position: relative; font-size: 16px; height: auto; padding: 10px;"/> 
+				</div>
+				
+				<br/> 
+				
+			<div class="inner-addon left-addon">
+    		<i class="glyphicon glyphicon-lock"></i>				
+			<input type="password"  th:placeholder="Password"
+				id="password" name="password" class="form-control" style = "position: relative; font-size: 16px; height: auto; padding: 10px;" /> 
+				</div>
+				<br /> 
+				
+			<div align="center" th:if="${param.error}">
+				<p style="font-size: 20; color: #FF1C19;">Email or Password invalid, please verify</p>
+			</div>
+			<button class="btn btn-lg btn-primary btn-block" name="Submit" value="Login" type="Submit" th:text="Login"></button>
+		</form>
+	</div>
+	
+	<form th:action="@{/registration}" method="get">
+	<h3 style="position: fixed; bottom: 0; width: 100%;text-align:right; color:white; height: 90px;padding:30px; background-color:blue; font-size: 15px;">Not a customer? &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+    <button style="padding: 8px; font-size:15px;color:white;background-color:blue;" type="Submit">Sign Up for Free</button>
+    </h3>
+    </form>
+</body>
+</html>
